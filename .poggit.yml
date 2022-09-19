@@ -1,0 +1,7 @@
+branches:
+- master
+
+projects:
+  FancyGenerators:
+    path: ""
+    icon: "icon.png"

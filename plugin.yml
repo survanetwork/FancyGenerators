@@ -1,0 +1,8 @@
+name: FancyGenerators
+main: surva\fancygenerators\FancyGenerators
+version: 0.0.1
+api: 4.0.0
+
+author: survanetwork
+description: A collection of new level Generators
+website: https://plugins.surva.net/#fancygenerators

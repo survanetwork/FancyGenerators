@@ -1,0 +1,38 @@
+{
+    "name": "survanetwork/fancygenerators",
+    "description": "A collection of new level Generators",
+    "version": "0.0.1",
+    "type": "project",
+    "keywords": [
+        "world",
+        "generator",
+        "pocketmine",
+        "void",
+        "islands"
+    ],
+    "homepage": "https://plugins.surva.net/#fancygenerators",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jarne",
+            "homepage": "https://github.com/jarne",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/survanetwork/FancyGenerators/issues",
+        "source": "https://github.com/survanetwork/FancyGenerators"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.8",
+        "pocketmine/pocketmine-mp": "^4.8",
+        "squizlabs/php_codesniffer": "^3.7"
+    },
+    "scripts": {
+        "code-analyze": "./vendor/bin/phpstan analyze -l 5 src",
+        "code-analyze-save-report": "./vendor/bin/phpstan analyze -l 5 --error-format junit src > test-results/phpstan-result/junit.xml",
+        "check-format": "./vendor/bin/phpcs --standard=PSR12 src",
+        "check-format-save-report": "./vendor/bin/phpcs --standard=PSR12 --report=junit src > test-results/phpcs-result/junit.xml",
+        "fix-format": "./vendor/bin/phpcbf --standard=PSR12 src"
+    }
+}
