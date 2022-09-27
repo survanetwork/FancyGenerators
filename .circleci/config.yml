@@ -59,7 +59,7 @@ jobs:
       - checkout
 
       # Install dependencies of PHP extensions
-      - run: sudo apt-get install -y libyaml-dev
+      - run: sudo apt-get update && sudo apt-get install -y libyaml-dev
 
       # Manually install PHP extensions
       - run: sudo pecl install yaml
@@ -71,7 +71,7 @@ jobs:
       - run: mkdir -p build-output
 
       # Build PHAR with DevTools
-      - run: php -d phar.readonly=0 DevTools/src/ConsoleScript.php --make plugin.yml,src --out build-output/$CIRCLE_PROJECT_REPONAME$CIRCLE_SHA1.phar
+      - run: php -d phar.readonly=0 DevTools/src/ConsoleScript.php --make plugin.yml,src --relative project --out build-output/$CIRCLE_PROJECT_REPONAME$CIRCLE_SHA1.phar
 
       # Save built PHAR file
       - store_artifacts:
