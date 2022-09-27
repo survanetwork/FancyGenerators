@@ -58,6 +58,9 @@ jobs:
       # Checkout branch
       - checkout
 
+      # Manually install PHP extensions
+      - run: sudo pecl install yaml
+
       # Clone DevTools sources
       - run: git clone https://github.com/pmmp/DevTools.git
 
