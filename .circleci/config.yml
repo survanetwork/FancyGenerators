@@ -58,6 +58,9 @@ jobs:
       # Checkout branch
       - checkout
 
+      # Install dependencies of PHP extensions
+      - run: sudo apt-get install -y libyaml-dev
+
       # Manually install PHP extensions
       - run: sudo pecl install yaml
 
