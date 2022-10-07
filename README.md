@@ -58,6 +58,7 @@ Available generators are:
 ```
 void
 candyland
+winterwonder
 ```
 
 ### Using the Worlds plugin
