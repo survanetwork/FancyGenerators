@@ -9,7 +9,7 @@
 
 namespace surva\fancygenerators\generator\winterwonder\populator;
 
-use pocketmine\block\VanillaBlocks;
+use pocketmine\block\BlockTypeIds;
 use pocketmine\utils\Random;
 use pocketmine\world\ChunkManager;
 use pocketmine\world\generator\populator\Populator;
@@ -53,21 +53,19 @@ class ChristmasTreePopulator implements Populator
      */
     private function getHighestTreeBlock(ChunkManager $world, int $x, int $z): ?int
     {
-        $snow = VanillaBlocks::SNOW()->getId();
-        $wood = VanillaBlocks::SPRUCE_WOOD()->getId();
-        $wool = VanillaBlocks::WOOL()->getId();
-
-        $air = VanillaBlocks::AIR()->getId();
-
         for ($y = 127; $y >= 0; --$y) {
             $block = $world->getBlockAt($x, $y, $z);
-            $blockId = $block->getId();
+            $blockId = $block->getTypeId();
 
-            if ($blockId === $snow || $blockId === $wood || $blockId === $wool) {
+            if (
+                $blockId === BlockTypeIds::SNOW ||
+                $blockId === BlockTypeIds::SPRUCE_WOOD ||
+                $blockId === BlockTypeIds::WOOL
+            ) {
                 return $y + 1;
             }
 
-            if ($blockId !== $air) {
+            if ($blockId !== BlockTypeIds::AIR) {
                 return null;
             }
         }

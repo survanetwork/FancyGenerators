@@ -43,10 +43,10 @@ class WinterWonder extends Generator
 
         $this->noiseBase = new Simplex($this->random, 4, 1 / 4, 1 / 32);
 
-        $this->fullSnow = VanillaBlocks::SNOW()->getFullId();
-        $this->fullWood = VanillaBlocks::SPRUCE_WOOD()->getFullId();
-        $this->fullRedWool = VanillaBlocks::WOOL()->setColor(DyeColor::RED())->getFullId();
-        $this->fullGreenWool = VanillaBlocks::WOOL()->setColor(DyeColor::GREEN())->getFullId();
+        $this->fullSnow = VanillaBlocks::SNOW()->getStateId();
+        $this->fullWood = VanillaBlocks::SPRUCE_WOOD()->getStateId();
+        $this->fullRedWool = VanillaBlocks::WOOL()->setColor(DyeColor::RED())->getStateId();
+        $this->fullGreenWool = VanillaBlocks::WOOL()->setColor(DyeColor::GREEN())->getStateId();
 
         $treePop = new ChristmasTreePopulator();
         $giftPop = new GiftPopulator();
@@ -60,13 +60,13 @@ class WinterWonder extends Generator
 
         $chunk = $world->getChunk($chunkX, $chunkZ);
 
-        $bedrock = VanillaBlocks::BEDROCK()->getFullId();
+        $bedrock = VanillaBlocks::BEDROCK()->getStateId();
 
         for ($x = 0; $x < 16; ++$x) {
             for ($z = 0; $z < 16; ++$z) {
                 for ($y = 0; $y < 128; ++$y) {
                     if ($y === 0) {
-                        $chunk->setFullBlock($x, $y, $z, $bedrock);
+                        $chunk->setBlockStateId($x, $y, $z, $bedrock);
 
                         continue;
                     }
@@ -75,7 +75,7 @@ class WinterWonder extends Generator
                                                                                  - self::MIN_HEIGHT);
 
                     if ($noiseValue > 0) {
-                        $chunk->setFullBlock($x, $y, $z, $this->getRandomWinterBlock());
+                        $chunk->setBlockStateId($x, $y, $z, $this->getRandomWinterBlock());
                     }
                 }
             }
