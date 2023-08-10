@@ -10,6 +10,7 @@
 namespace surva\fancygenerators\generator\winterwonder\object;
 
 use pocketmine\block\Block;
+use pocketmine\block\BlockTypeIds;
 use pocketmine\block\utils\DyeColor;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\world\BlockTransaction;
@@ -240,17 +241,14 @@ class ChristmasTree
      */
     private function getHighestTreeBlockAt(int $x, int $z, int $maxY, BlockTransaction $transaction): ?int
     {
-        $wool = VanillaBlocks::WOOL()->getId();
-        $air = VanillaBlocks::AIR()->getId();
-
         for ($y = $maxY; $y > 0; $y--) {
-            $idAt = $transaction->fetchBlockAt($x, $y, $z)->getId();
+            $idAt = $transaction->fetchBlockAt($x, $y, $z)->getTypeId();
 
-            if ($idAt === $wool) {
+            if ($idAt === BlockTypeIds::WOOL) {
                 return $y;
             }
 
-            if ($idAt !== $air) {
+            if ($idAt !== BlockTypeIds::AIR) {
                 return null;
             }
         }

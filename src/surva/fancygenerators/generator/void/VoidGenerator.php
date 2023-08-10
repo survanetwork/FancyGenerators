@@ -71,26 +71,26 @@ class VoidGenerator extends Generator
         $spawn = $this->defaultSpawn;
         $underSpawn = $spawn->subtract(0, 1, 0);
 
-        $planks = VanillaBlocks::OAK_PLANKS()->getFullId();
+        $planks = VanillaBlocks::OAK_PLANKS()->getStateId();
 
         switch ($whichChunk) {
             case self::SPAWN:
                 for ($x = 0; $x <= 1; $x++) {
                     for ($z = 0; $z <= 1; $z++) {
-                        $chunk->setFullBlock($x, $underSpawn->getY(), $z, $planks);
+                        $chunk->setBlockStateId($x, $underSpawn->getY(), $z, $planks);
                     }
                 }
                 break;
             case self::NB_X:
-                $chunk->setFullBlock(0, $underSpawn->getY(), 15, $planks);
-                $chunk->setFullBlock(1, $underSpawn->getY(), 15, $planks);
+                $chunk->setBlockStateId(0, $underSpawn->getY(), 15, $planks);
+                $chunk->setBlockStateId(1, $underSpawn->getY(), 15, $planks);
                 break;
             case self::NB_Z:
-                $chunk->setFullBlock(15, $underSpawn->getY(), 0, $planks);
-                $chunk->setFullBlock(15, $underSpawn->getY(), 1, $planks);
+                $chunk->setBlockStateId(15, $underSpawn->getY(), 0, $planks);
+                $chunk->setBlockStateId(15, $underSpawn->getY(), 1, $planks);
                 break;
             case self::NB_BOTH:
-                $chunk->setFullBlock(15, $underSpawn->getY(), 15, $planks);
+                $chunk->setBlockStateId(15, $underSpawn->getY(), 15, $planks);
                 break;
         }
 

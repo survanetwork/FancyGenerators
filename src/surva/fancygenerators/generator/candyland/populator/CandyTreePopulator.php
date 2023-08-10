@@ -9,7 +9,7 @@
 
 namespace surva\fancygenerators\generator\candyland\populator;
 
-use pocketmine\block\VanillaBlocks;
+use pocketmine\block\BlockTypeIds;
 use pocketmine\utils\Random;
 use pocketmine\world\ChunkManager;
 use pocketmine\world\generator\populator\Populator;
@@ -53,18 +53,15 @@ class CandyTreePopulator implements Populator
      */
     private function getHighestTreeBlock(ChunkManager $world, int $x, int $z): ?int
     {
-        $stainedClay = VanillaBlocks::STAINED_CLAY()->getId();
-        $air = VanillaBlocks::AIR()->getId();
-
         for ($y = 127; $y >= 0; --$y) {
             $block = $world->getBlockAt($x, $y, $z);
-            $blockId = $block->getId();
+            $blockId = $block->getTypeId();
 
-            if ($blockId === $stainedClay) {
+            if ($blockId === BlockTypeIds::STAINED_CLAY) {
                 return $y + 1;
             }
 
-            if ($blockId !== $air) {
+            if ($blockId !== BlockTypeIds::AIR) {
                 return null;
             }
         }

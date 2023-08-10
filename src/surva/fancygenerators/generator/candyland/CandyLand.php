@@ -49,13 +49,13 @@ class CandyLand extends Generator
 
         $chunk = $world->getChunk($chunkX, $chunkZ);
 
-        $bedrock = VanillaBlocks::BEDROCK()->getFullId();
+        $bedrock = VanillaBlocks::BEDROCK()->getStateId();
 
         for ($x = 0; $x < 16; ++$x) {
             for ($z = 0; $z < 16; ++$z) {
                 for ($y = 0; $y < 128; ++$y) {
                     if ($y === 0) {
-                        $chunk->setFullBlock($x, $y, $z, $bedrock);
+                        $chunk->setBlockStateId($x, $y, $z, $bedrock);
 
                         continue;
                     }
@@ -67,7 +67,7 @@ class CandyLand extends Generator
                         $stainedClay = VanillaBlocks::STAINED_CLAY();
                         $stainedClay->setColor(self::getRandomBlockColor());
 
-                        $chunk->setFullBlock($x, $y, $z, $stainedClay->getFullId());
+                        $chunk->setBlockStateId($x, $y, $z, $stainedClay->getStateId());
                     }
                 }
             }
