@@ -15,6 +15,7 @@ use pocketmine\block\VanillaBlocks;
 use pocketmine\world\ChunkManager;
 use pocketmine\world\generator\Generator;
 use pocketmine\world\generator\noise\Simplex;
+use surva\fancygenerators\FancyGenerators;
 use surva\fancygenerators\generator\candyland\populator\CandyTreePopulator;
 
 class CandyLand extends Generator
@@ -48,6 +49,14 @@ class CandyLand extends Generator
         $noise = $this->noiseBase->getFastNoise3D(16, 128, 16, 4, 8, 4, $chunkX * 16, 0, $chunkZ * 16);
 
         $chunk = $world->getChunk($chunkX, $chunkZ);
+
+        if ($chunk === null) {
+            FancyGenerators::getInstance()->getLogger()->error(
+                "CandyLand generator cannot generate chunk, chunk was null!"
+            );
+
+            return;
+        }
 
         $bedrock = VanillaBlocks::BEDROCK()->getStateId();
 
