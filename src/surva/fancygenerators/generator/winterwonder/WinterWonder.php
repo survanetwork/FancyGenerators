@@ -15,6 +15,7 @@ use pocketmine\block\VanillaBlocks;
 use pocketmine\world\ChunkManager;
 use pocketmine\world\generator\Generator;
 use pocketmine\world\generator\noise\Simplex;
+use surva\fancygenerators\FancyGenerators;
 use surva\fancygenerators\generator\winterwonder\populator\ChristmasTreePopulator;
 use surva\fancygenerators\generator\winterwonder\populator\GiftPopulator;
 
@@ -59,6 +60,14 @@ class WinterWonder extends Generator
         $noise = $this->noiseBase->getFastNoise3D(16, 128, 16, 4, 8, 4, $chunkX * 16, 0, $chunkZ * 16);
 
         $chunk = $world->getChunk($chunkX, $chunkZ);
+
+        if ($chunk === null) {
+            FancyGenerators::getInstance()->getLogger()->error(
+                "WinterWonder generator cannot generate chunk, chunk was null!"
+            );
+
+            return;
+        }
 
         $bedrock = VanillaBlocks::BEDROCK()->getStateId();
 

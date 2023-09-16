@@ -11,6 +11,8 @@ use pocketmine\math\Vector3;
 use pocketmine\world\ChunkManager;
 use pocketmine\world\format\Chunk;
 use pocketmine\world\generator\Generator;
+use surva\fancygenerators\FancyGenerators;
+use surva\fancygenerators\generator\exception\ChunkPopulateException;
 
 class VoidGenerator extends Generator
 {
@@ -63,13 +65,19 @@ class VoidGenerator extends Generator
      * @param  int  $whichChunk
      *
      * @return \pocketmine\world\format\Chunk
+     * @throws \surva\fancygenerators\generator\exception\ChunkPopulateException
      */
     private function generateFirstChunk(ChunkManager $world, int $chunkX, int $chunkZ, int $whichChunk): Chunk
     {
         $chunk = $world->getChunk($chunkX, $chunkZ);
 
+        if ($chunk === null) {
+            throw new ChunkPopulateException("first chunk is null");
+        }
+
         $spawn = $this->defaultSpawn;
         $underSpawn = $spawn->subtract(0, 1, 0);
+        $yUnderSpawn = (int) $underSpawn->getY();
 
         $planks = VanillaBlocks::OAK_PLANKS()->getStateId();
 
@@ -77,20 +85,20 @@ class VoidGenerator extends Generator
             case self::SPAWN:
                 for ($x = 0; $x <= 1; $x++) {
                     for ($z = 0; $z <= 1; $z++) {
-                        $chunk->setBlockStateId($x, $underSpawn->getY(), $z, $planks);
+                        $chunk->setBlockStateId($x, $yUnderSpawn, $z, $planks);
                     }
                 }
                 break;
             case self::NB_X:
-                $chunk->setBlockStateId(0, $underSpawn->getY(), 15, $planks);
-                $chunk->setBlockStateId(1, $underSpawn->getY(), 15, $planks);
+                $chunk->setBlockStateId(0, $yUnderSpawn, 15, $planks);
+                $chunk->setBlockStateId(1, $yUnderSpawn, 15, $planks);
                 break;
             case self::NB_Z:
-                $chunk->setBlockStateId(15, $underSpawn->getY(), 0, $planks);
-                $chunk->setBlockStateId(15, $underSpawn->getY(), 1, $planks);
+                $chunk->setBlockStateId(15, $yUnderSpawn, 0, $planks);
+                $chunk->setBlockStateId(15, $yUnderSpawn, 1, $planks);
                 break;
             case self::NB_BOTH:
-                $chunk->setBlockStateId(15, $underSpawn->getY(), 15, $planks);
+                $chunk->setBlockStateId(15, $yUnderSpawn, 15, $planks);
                 break;
         }
 
@@ -105,24 +113,37 @@ class VoidGenerator extends Generator
      * @param  int  $chunkZ
      *
      * @return \pocketmine\world\format\Chunk
+     * @throws \surva\fancygenerators\generator\exception\ChunkPopulateException
      */
     private function generateBaseChunk(ChunkManager $world, int $chunkX, int $chunkZ): Chunk
     {
-        return $world->getChunk($chunkX, $chunkZ);
+        $chunk = $world->getChunk($chunkX, $chunkZ);
+
+        if ($chunk === null) {
+            throw new ChunkPopulateException("chunk to generate is null");
+        }
+
+        return $chunk;
     }
 
     public function generateChunk(ChunkManager $world, int $chunkX, int $chunkZ): void
     {
-        if ($chunkX === $this->spawnChunkX and $chunkZ === $this->spawnChunkZ) {
-            $chunk = $this->generateFirstChunk($world, $chunkX, $chunkZ, self::SPAWN);
-        } elseif ($chunkX === $this->xNbSpawnChunkX and $chunkZ === $this->xNbSpawnChunkZ) {
-            $chunk = $this->generateFirstChunk($world, $chunkX, $chunkZ, self::NB_X);
-        } elseif ($chunkX === $this->zNbSpawnChunkX and $chunkZ === $this->zNbSpawnChunkZ) {
-            $chunk = $this->generateFirstChunk($world, $chunkX, $chunkZ, self::NB_Z);
-        } elseif ($chunkX === $this->bothNbSpawnChunkX and $chunkZ === $this->bothNbSpawnChunkZ) {
-            $chunk = $this->generateFirstChunk($world, $chunkX, $chunkZ, self::NB_BOTH);
-        } else {
-            $chunk = $this->generateBaseChunk($world, $chunkX, $chunkZ);
+        try {
+            if ($chunkX === $this->spawnChunkX and $chunkZ === $this->spawnChunkZ) {
+                $chunk = $this->generateFirstChunk($world, $chunkX, $chunkZ, self::SPAWN);
+            } elseif ($chunkX === $this->xNbSpawnChunkX and $chunkZ === $this->xNbSpawnChunkZ) {
+                $chunk = $this->generateFirstChunk($world, $chunkX, $chunkZ, self::NB_X);
+            } elseif ($chunkX === $this->zNbSpawnChunkX and $chunkZ === $this->zNbSpawnChunkZ) {
+                $chunk = $this->generateFirstChunk($world, $chunkX, $chunkZ, self::NB_Z);
+            } elseif ($chunkX === $this->bothNbSpawnChunkX and $chunkZ === $this->bothNbSpawnChunkZ) {
+                $chunk = $this->generateFirstChunk($world, $chunkX, $chunkZ, self::NB_BOTH);
+            } else {
+                $chunk = $this->generateBaseChunk($world, $chunkX, $chunkZ);
+            }
+        } catch (ChunkPopulateException $ex) {
+            FancyGenerators::getInstance()->getLogger()->error("Cannot generate void chunk: " . $ex->getMessage());
+
+            return;
         }
 
         $world->setChunk($chunkX, $chunkZ, $chunk);
