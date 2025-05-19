@@ -43,17 +43,17 @@ class VoidGenerator extends Generator
 
         $this->defaultSpawn = new Vector3(256, 65, 256);
 
-        $this->spawnChunkX = $this->defaultSpawn->getX() >> 4;
-        $this->spawnChunkZ = $this->defaultSpawn->getZ() >> 4;
+        $this->spawnChunkX = (int) $this->defaultSpawn->getX() >> 4;
+        $this->spawnChunkZ = (int) $this->defaultSpawn->getZ() >> 4;
 
         $this->xNbSpawnChunkX = $this->spawnChunkX;
-        $this->xNbSpawnChunkZ = ($this->defaultSpawn->getZ() - 1) >> 4;
+        $this->xNbSpawnChunkZ = ((int) $this->defaultSpawn->getZ() - 1) >> 4;
 
-        $this->zNbSpawnChunkX = ($this->defaultSpawn->getX() - 1) >> 4;
+        $this->zNbSpawnChunkX = ((int) $this->defaultSpawn->getX() - 1) >> 4;
         $this->zNbSpawnChunkZ = $this->spawnChunkZ;
 
-        $this->bothNbSpawnChunkX = ($this->defaultSpawn->getX() - 1) >> 4;
-        $this->bothNbSpawnChunkZ = ($this->defaultSpawn->getZ() - 1) >> 4;
+        $this->bothNbSpawnChunkX = ((int) $this->defaultSpawn->getX() - 1) >> 4;
+        $this->bothNbSpawnChunkZ = ((int) $this->defaultSpawn->getZ() - 1) >> 4;
     }
 
     /**
