@@ -59,6 +59,7 @@ Available generators are:
 void
 candyland
 winterwonder
+pirateislands
 ```
 
 ### Using the Worlds plugin
