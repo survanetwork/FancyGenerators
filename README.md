@@ -5,8 +5,6 @@
 <h1 align="center">FancyGenerators</h1>
 <p align="center">A collection of new level Generators</p>
 
-<br>
-
 <p align="center">
     <a href="https://poggit.pmmp.io/p/FancyGenerators">
         <img src="https://poggit.pmmp.io/shield.state/FancyGenerators" alt="Plugin version">
@@ -28,8 +26,6 @@
     </a>
 </p>
 
-##
-
 <p align="center">
     <a href="https://plugins.surva.net/#fancygenerators">
         <img src="https://static.surva.net/osplugins/assets/dl-buttons/fancygenerators.png" width="220" height="auto" alt="Download FancyGenerators plugin release">
@@ -37,16 +33,50 @@
     </a>
 </p>
 
-[Description](#-description) | [Features](#-features) | [Usage](#-usage)
-| [Contribution](#-contribution) | [License](#%EF%B8%8F-license)
-
 ## 📙 Description
-FancyGenerators is an experimental plugin project which adds new kinds of world generators to your PocketMine-MP server. We've implemented some well-known world generators like void with better performance. We've also added some crazy new world generators creating fantasy worlds. You can use any compatible world management plugin, e.g. [Worlds by surva](https://plugins.surva.net/#worlds).
+FancyGenerators is an experimental plugin project which adds new kinds of world generators to your PocketMine-MP server.
+We've implemented some well-known world generators like void with better performance.
+We've also added some crazy new world generators creating fantasy worlds.
+You can use any compatible world management plugin, e.g. [Worlds by surva](https://plugins.surva.net/#worlds).
 
 ## 🎁 Features
 - **COMMON WORLD GENERATORS** Adds well-known world generators like void with great performance
 - **SPECIAL WORLD GENERATORS** Create worlds like never before with our special, crazy world generators
 - **COMPATIBILITY** Using the standard API, compatible with every modern world management plugin
+
+## 🗺️ Generators
+
+### Void
+
+The void generator just generates an empty world without any blocks, but a small 2x2 planks
+platform at the spawn.
+
+<img src=".github/.media/screenshots/void.png" alt="Void generator world screenshot">
+
+### CandyLand
+
+CandyLand creates a very colorful world with clay blocks in random colors and
+custom colorful trees, also made out of clay blocks. However, it is also the generator
+with the worst performance yet, so world generation requires a bit more computing power than
+usual (but still runs on most computers).
+
+<img src=".github/.media/screenshots/candyland.png" alt="CandyLand generator world screenshot">
+
+### WinterWonder
+
+WinterWonder generates a beautiful Christmas-themed world with snow-blocks mixed with red and
+green decorations of wool. The world is populated with Christmas trees (made of green wool and torches)
+and gifts in random colors.
+
+<img src=".github/.media/screenshots/winterwonder.png" alt="WinterWonder generator world screenshot">
+
+### PirateIslands
+
+PirateIslands creates a huge sea with a constant water level and ground made out of sand and sandstone.
+It randomly spawns hilly islands in the water with terrain made out of sandstone and jungle
+trees on the islands.
+
+<img src=".github/.media/screenshots/pirateislands.png" alt="PirateIslands generator world screenshot">
 
 ## 🖱 Usage
 Just drop the plugin file into your server's plugin folder, there is no further configuration or commands required.
