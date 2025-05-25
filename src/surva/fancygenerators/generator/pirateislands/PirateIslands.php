@@ -15,6 +15,7 @@ use pocketmine\world\format\PalettedBlockArray;
 use pocketmine\world\format\SubChunk;
 use pocketmine\world\generator\Generator;
 use pocketmine\world\generator\noise\Simplex;
+use surva\fancygenerators\FancyGenerators;
 
 class PirateIslands extends Generator
 {
@@ -61,7 +62,7 @@ class PirateIslands extends Generator
                         $subChunk->setBlockStateId($x, $y, $z, $sandStone);
                     } elseif ($y < self::SAND_UNTIL) {
                         $subChunk->setBlockStateId($x, $y, $z, $sand);
-                    } elseif ($y < self::WATER_UNTIL) {
+                    } else {
                         $subChunk->setBlockStateId($x, $y, $z, $water);
                     }
                 }
@@ -74,6 +75,12 @@ class PirateIslands extends Generator
     public function generateChunk(ChunkManager $world, int $chunkX, int $chunkZ): void
     {
         $chunk = $world->getChunk($chunkX, $chunkZ);
+
+        if ($chunk === null) {
+            FancyGenerators::getInstance()->getLogger()->error("Cannot generate chunk: chunk to generate is null");
+
+            return;
+        }
 
         $subChunk = clone $this->baseGroundSubChunk;
         $chunk->setSubChunk(self::GROUND_CHUNK, $subChunk);
