@@ -16,6 +16,7 @@ use pocketmine\world\format\SubChunk;
 use pocketmine\world\generator\Generator;
 use pocketmine\world\generator\noise\Simplex;
 use surva\fancygenerators\FancyGenerators;
+use surva\fancygenerators\generator\pirateislands\populator\JungleTreePopulator;
 
 class PirateIslands extends Generator
 {
@@ -32,6 +33,10 @@ class PirateIslands extends Generator
     private const ISLAND_RADIUS = 64;
 
     private Simplex $noiseBase;
+    /**
+     * @var \pocketmine\world\generator\populator\Populator[] populators
+     */
+    private array $populators = [];
 
     private SubChunk $baseGroundSubChunk;
 
@@ -40,6 +45,7 @@ class PirateIslands extends Generator
         parent::__construct($seed, $preset);
 
         $this->noiseBase = new Simplex($this->random, 4, 1 / 4, 1 / 64);
+        $this->populators[] = new JungleTreePopulator();
 
         $this->generateBaseGroundSubChunk();
     }
@@ -159,6 +165,8 @@ class PirateIslands extends Generator
 
     public function populateChunk(ChunkManager $world, int $chunkX, int $chunkZ): void
     {
-        // no population needed
+        foreach ($this->populators as $populator) {
+            $populator->populate($world, $chunkX, $chunkZ, $this->random);
+        }
     }
 }
