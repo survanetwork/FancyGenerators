@@ -51,9 +51,7 @@ class CandyLand extends Generator
         $chunk = $world->getChunk($chunkX, $chunkZ);
 
         if ($chunk === null) {
-            FancyGenerators::getInstance()->getLogger()->error(
-                "CandyLand generator cannot generate chunk, chunk was null!"
-            );
+            FancyGenerators::getInstance()->getLogger()->error("Cannot generate chunk: chunk to generate is null");
 
             return;
         }
