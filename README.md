@@ -51,7 +51,7 @@ You can use any compatible world management plugin, e.g. [Worlds by surva](https
 The void generator just generates an empty world without any blocks, but a small 2x2 planks
 platform at the spawn.
 
-<img src=".github/.media/screenshots/void.png" alt="Void generator world screenshot">
+<img src=".github/.media/screenshots/void.png" width="450" height="auto" alt="Void generator world screenshot">
 
 ### CandyLand
 
@@ -60,7 +60,7 @@ custom colorful trees, also made out of clay blocks. However, it is also the gen
 with the worst performance yet, so world generation requires a bit more computing power than
 usual (but still runs on most computers).
 
-<img src=".github/.media/screenshots/candyland.png" alt="CandyLand generator world screenshot">
+<img src=".github/.media/screenshots/candyland.png" width="450" height="auto" alt="CandyLand generator world screenshot">
 
 ### WinterWonder
 
@@ -68,7 +68,7 @@ WinterWonder generates a beautiful Christmas-themed world with snow-blocks mixed
 green decorations of wool. The world is populated with Christmas trees (made of green wool and torches)
 and gifts in random colors.
 
-<img src=".github/.media/screenshots/winterwonder.png" alt="WinterWonder generator world screenshot">
+<img src=".github/.media/screenshots/winterwonder.png" width="450" height="auto" alt="WinterWonder generator world screenshot">
 
 ### PirateIslands
 
@@ -76,7 +76,7 @@ PirateIslands creates a huge sea with a constant water level and ground made out
 It randomly spawns hilly islands in the water with terrain made out of sandstone and jungle
 trees on the islands.
 
-<img src=".github/.media/screenshots/pirateislands.png" alt="PirateIslands generator world screenshot">
+<img src=".github/.media/screenshots/pirateislands.png" width="450" height="auto" alt="PirateIslands generator world screenshot">
 
 ## 🖱 Usage
 Just drop the plugin file into your server's plugin folder, there is no further configuration or commands required.
