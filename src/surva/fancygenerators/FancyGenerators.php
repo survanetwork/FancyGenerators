@@ -10,6 +10,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\world\generator\GeneratorManager;
 use RuntimeException;
 use surva\fancygenerators\generator\candyland\CandyLand;
+use surva\fancygenerators\generator\pirateislands\PirateIslands;
 use surva\fancygenerators\generator\void\VoidGenerator;
 use surva\fancygenerators\generator\winterwonder\WinterWonder;
 
@@ -35,6 +36,7 @@ class FancyGenerators extends PluginBase
         GeneratorManager::getInstance()->addGenerator(VoidGenerator::class, VoidGenerator::NAME, fn() => null);
         GeneratorManager::getInstance()->addGenerator(CandyLand::class, CandyLand::NAME, fn() => null);
         GeneratorManager::getInstance()->addGenerator(WinterWonder::class, WinterWonder::NAME, fn() => null);
+        GeneratorManager::getInstance()->addGenerator(PirateIslands::class, PirateIslands::NAME, fn() => null);
     }
 
     /**
