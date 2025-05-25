@@ -55,6 +55,7 @@ class PirateIslands extends Generator
      */
     private function generateBaseGroundSubChunk(): void
     {
+        // @phpstan-ignore class.notFound
         $subChunk = new SubChunk(Block::EMPTY_STATE_ID, [], new PalettedBlockArray(BiomeIds::OCEAN));
 
         $sandStone = VanillaBlocks::SANDSTONE()->getStateId();
