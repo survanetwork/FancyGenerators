@@ -24,8 +24,8 @@ class CandyLand extends Generator
 
     private const EMPTY_HEIGHT = 64;
     private const MIN_HEIGHT = 16;
-    private const COLOR_MIN = 1;
-    private const COLOR_MAX = 16;
+    private const COLOR_MIN = 0;
+    private const COLOR_MAX = 15;
 
     /**
      * @var \pocketmine\world\generator\populator\Populator[] populators
@@ -97,23 +97,6 @@ class CandyLand extends Generator
     {
         $colId = rand(self::COLOR_MIN, self::COLOR_MAX);
 
-        return match ($colId) {
-            1 => DyeColor::BLACK(),
-            2 => DyeColor::BLUE(),
-            3 => DyeColor::BROWN(),
-            4 => DyeColor::CYAN(),
-            5 => DyeColor::GRAY(),
-            6 => DyeColor::GREEN(),
-            7 => DyeColor::LIGHT_BLUE(),
-            8 => DyeColor::LIGHT_GRAY(),
-            9 => DyeColor::LIME(),
-            10 => DyeColor::MAGENTA(),
-            11 => DyeColor::ORANGE(),
-            12 => DyeColor::PINK(),
-            13 => DyeColor::PURPLE(),
-            14 => DyeColor::RED(),
-            15 => DyeColor::WHITE(),
-            16 => DyeColor::YELLOW()
-        };
+        return DyeColor::cases()[$colId];
     }
 }
