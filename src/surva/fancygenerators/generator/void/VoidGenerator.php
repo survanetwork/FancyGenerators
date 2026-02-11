@@ -60,10 +60,10 @@ class VoidGenerator extends Generator
     /**
      * Generate one of the first chunks including the start blocks
      *
-     * @param  ChunkManager  $world
-     * @param  int  $chunkX
-     * @param  int  $chunkZ
-     * @param  int  $whichChunk
+     * @param ChunkManager $world
+     * @param int $chunkX
+     * @param int $chunkZ
+     * @param int $whichChunk
      *
      * @return Chunk
      * @throws ChunkPopulateException
@@ -109,9 +109,9 @@ class VoidGenerator extends Generator
     /**
      * Generate a basic empty chunk
      *
-     * @param  ChunkManager  $world
-     * @param  int  $chunkX
-     * @param  int  $chunkZ
+     * @param ChunkManager $world
+     * @param int $chunkX
+     * @param int $chunkZ
      *
      * @return Chunk
      * @throws ChunkPopulateException
