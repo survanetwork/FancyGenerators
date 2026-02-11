@@ -45,9 +45,9 @@ class ChristmasTreePopulator implements Populator
     /**
      * Get the y + 1 coordinate of the highest block at a specific position
      *
-     * @param  \pocketmine\world\ChunkManager  $world
-     * @param  int  $x
-     * @param  int  $z
+     * @param ChunkManager $world
+     * @param int $x
+     * @param int $z
      *
      * @return int|null
      */
@@ -58,9 +58,9 @@ class ChristmasTreePopulator implements Populator
             $blockId = $block->getTypeId();
 
             if (
-                $blockId === BlockTypeIds::SNOW ||
-                $blockId === BlockTypeIds::SPRUCE_WOOD ||
-                $blockId === BlockTypeIds::WOOL
+                $blockId === BlockTypeIds::SNOW
+                || $blockId === BlockTypeIds::SPRUCE_WOOD
+                || $blockId === BlockTypeIds::WOOL
             ) {
                 return $y + 1;
             }

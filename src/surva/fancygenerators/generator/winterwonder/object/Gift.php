@@ -53,12 +53,12 @@ class Gift
     /**
      * Get block transaction for gift object
      *
-     * @param  \pocketmine\world\ChunkManager  $world
-     * @param  int  $x
-     * @param  int  $y
-     * @param  int  $z
+     * @param ChunkManager $world
+     * @param int $x
+     * @param int $y
+     * @param int $z
      *
-     * @return \pocketmine\world\BlockTransaction|null
+     * @return BlockTransaction|null
      */
     public function getBlockTransaction(ChunkManager $world, int $x, int $y, int $z): ?BlockTransaction
     {
@@ -76,10 +76,10 @@ class Gift
     /**
      * Check if a Christmas gift can be placed at this position
      *
-     * @param  \pocketmine\world\ChunkManager  $world
-     * @param  int  $x
-     * @param  int  $y
-     * @param  int  $z
+     * @param ChunkManager $world
+     * @param int $x
+     * @param int $y
+     * @param int $z
      *
      * @return bool
      */
@@ -101,12 +101,12 @@ class Gift
     }
 
     /**
-     * Place gift object
+     * Place gift object and generate blocks
      *
-     * @param  int  $x
-     * @param  int  $y
-     * @param  int  $z
-     * @param  \pocketmine\world\BlockTransaction  $transaction
+     * @param int $x
+     * @param int $y
+     * @param int $z
+     * @param BlockTransaction $transaction
      *
      * @return void
      */
@@ -154,7 +154,7 @@ class Gift
         foreach ($baseBlocksOffs as $baseBlockOff) {
             if (
                 $transaction->fetchBlockAt($x + $baseBlockOff[0], $y + $baseBlockOff[1], $z + $baseBlockOff[2])
-                            ->canBeReplaced()
+                          ->canBeReplaced()
             ) {
                 $transaction->addBlockAt(
                     $x + $baseBlockOff[0],

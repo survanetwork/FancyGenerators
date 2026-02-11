@@ -1,7 +1,8 @@
 <?php
 
 /**
- * FancyGenerators | PirateIslands generator
+ * FancyGenerators | PirateIslands generator, generates an ocean theme with small
+ * islands made out of sands with trees spawned on top
  */
 
 namespace surva\fancygenerators\generator\pirateislands;
@@ -15,6 +16,7 @@ use pocketmine\world\format\PalettedBlockArray;
 use pocketmine\world\format\SubChunk;
 use pocketmine\world\generator\Generator;
 use pocketmine\world\generator\noise\Simplex;
+use pocketmine\world\generator\populator\Populator;
 use surva\fancygenerators\FancyGenerators;
 use surva\fancygenerators\generator\pirateislands\populator\JungleTreePopulator;
 
@@ -34,7 +36,7 @@ class PirateIslands extends Generator
 
     private Simplex $noiseBase;
     /**
-     * @var \pocketmine\world\generator\populator\Populator[] populators
+     * @var Populator[] populators
      */
     private array $populators = [];
 
@@ -52,6 +54,8 @@ class PirateIslands extends Generator
 
     /**
      * Generate a basic "beach-like" ground sub chunk
+     *
+     * @return void
      */
     private function generateBaseGroundSubChunk(): void
     {

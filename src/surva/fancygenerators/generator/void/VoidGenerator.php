@@ -1,7 +1,8 @@
 <?php
 
 /**
- * FancyGenerators | void generator
+ * FancyGenerators | void generator, generates an empty world with a small
+ * platform at the spawn
  */
 
 namespace surva\fancygenerators\generator\void;
@@ -59,13 +60,13 @@ class VoidGenerator extends Generator
     /**
      * Generate one of the first chunks including the start blocks
      *
-     * @param  \pocketmine\world\ChunkManager  $world
+     * @param  ChunkManager  $world
      * @param  int  $chunkX
      * @param  int  $chunkZ
      * @param  int  $whichChunk
      *
-     * @return \pocketmine\world\format\Chunk
-     * @throws \surva\fancygenerators\generator\exception\ChunkPopulateException
+     * @return Chunk
+     * @throws ChunkPopulateException
      */
     private function generateFirstChunk(ChunkManager $world, int $chunkX, int $chunkZ, int $whichChunk): Chunk
     {
@@ -108,12 +109,12 @@ class VoidGenerator extends Generator
     /**
      * Generate a basic empty chunk
      *
-     * @param  \pocketmine\world\ChunkManager  $world
+     * @param  ChunkManager  $world
      * @param  int  $chunkX
      * @param  int  $chunkZ
      *
-     * @return \pocketmine\world\format\Chunk
-     * @throws \surva\fancygenerators\generator\exception\ChunkPopulateException
+     * @return Chunk
+     * @throws ChunkPopulateException
      */
     private function generateBaseChunk(ChunkManager $world, int $chunkX, int $chunkZ): Chunk
     {

@@ -1,7 +1,8 @@
 <?php
 
 /**
- * FancyGenerators | CandyLand generator
+ * FancyGenerators | CandyLand generator, creates a world made of colored clay
+ * and populated with candy trees
  *
  * most of the generation code adapted from PocketMine's Normal and Nether generators
  * https://github.com/pmmp/PocketMine-MP/blob/stable/src/world/generator/normal/Normal.php
@@ -15,6 +16,7 @@ use pocketmine\block\VanillaBlocks;
 use pocketmine\world\ChunkManager;
 use pocketmine\world\generator\Generator;
 use pocketmine\world\generator\noise\Simplex;
+use pocketmine\world\generator\populator\Populator;
 use surva\fancygenerators\FancyGenerators;
 use surva\fancygenerators\generator\candyland\populator\CandyTreePopulator;
 
@@ -28,7 +30,7 @@ class CandyLand extends Generator
     private const COLOR_MAX = 15;
 
     /**
-     * @var \pocketmine\world\generator\populator\Populator[] populators
+     * @var Populator[] populators
      */
     private array $populators = [];
 
@@ -40,7 +42,7 @@ class CandyLand extends Generator
 
         $this->noiseBase = new Simplex($this->random, 4, 1 / 4, 1 / 64);
 
-        $treePop            = new CandyTreePopulator();
+        $treePop = new CandyTreePopulator();
         $this->populators[] = $treePop;
     }
 
@@ -91,7 +93,7 @@ class CandyLand extends Generator
     /**
      * Get a random color for a block
      *
-     * @return \pocketmine\block\utils\DyeColor
+     * @return DyeColor
      */
     public static function getRandomBlockColor(): DyeColor
     {

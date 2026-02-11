@@ -1,7 +1,8 @@
 <?php
 
 /**
- * FancyGenerators | WinterWonder generator
+ * FancyGenerators | WinterWonder generator, generates a snow and winter
+ * landscape with Christmas trees and gifts
  *
  * most of the generation code adapted from PocketMine's Normal and Nether generators
  * https://github.com/pmmp/PocketMine-MP/blob/stable/src/world/generator/normal/Normal.php
@@ -15,6 +16,7 @@ use pocketmine\block\VanillaBlocks;
 use pocketmine\world\ChunkManager;
 use pocketmine\world\generator\Generator;
 use pocketmine\world\generator\noise\Simplex;
+use pocketmine\world\generator\populator\Populator;
 use surva\fancygenerators\FancyGenerators;
 use surva\fancygenerators\generator\winterwonder\populator\ChristmasTreePopulator;
 use surva\fancygenerators\generator\winterwonder\populator\GiftPopulator;
@@ -27,7 +29,7 @@ class WinterWonder extends Generator
     private const MIN_HEIGHT = 32;
 
     /**
-     * @var \pocketmine\world\generator\populator\Populator[] populators
+     * @var Populator[] populators
      */
     private array $populators;
 
@@ -97,7 +99,7 @@ class WinterWonder extends Generator
     }
 
     /**
-     * Get random block for winter ground
+     * Get a random block for winter ground
      *
      * @return int
      */

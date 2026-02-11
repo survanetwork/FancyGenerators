@@ -40,12 +40,12 @@ class ChristmasTree
     /**
      * Get block transaction for Christmas tree
      *
-     * @param  \pocketmine\world\ChunkManager  $world
-     * @param  int  $x
-     * @param  int  $y
-     * @param  int  $z
+     * @param ChunkManager $world
+     * @param int $x
+     * @param int $y
+     * @param int $z
      *
-     * @return \pocketmine\world\BlockTransaction|null
+     * @return BlockTransaction|null
      */
     public function getBlockTransaction(ChunkManager $world, int $x, int $y, int $z): ?BlockTransaction
     {
@@ -65,10 +65,10 @@ class ChristmasTree
     /**
      * Check if a Christmas tree can be placed at this position
      *
-     * @param  \pocketmine\world\ChunkManager  $world
-     * @param  int  $x
-     * @param  int  $y
-     * @param  int  $z
+     * @param ChunkManager $world
+     * @param int $x
+     * @param int $y
+     * @param int $z
      *
      * @return bool
      */
@@ -98,10 +98,10 @@ class ChristmasTree
     /**
      * Place Christmas tree trunk
      *
-     * @param  int  $x
-     * @param  int  $y
-     * @param  int  $z
-     * @param  \pocketmine\world\BlockTransaction  $transaction
+     * @param int $x
+     * @param int $y
+     * @param int $z
+     * @param BlockTransaction $transaction
      *
      * @return void
      */
@@ -117,10 +117,10 @@ class ChristmasTree
     /**
      * Place Christmas tree canopy
      *
-     * @param  int  $x
-     * @param  int  $y
-     * @param  int  $z
-     * @param  \pocketmine\world\BlockTransaction  $transaction
+     * @param int $x
+     * @param int $y
+     * @param int $z
+     * @param BlockTransaction $transaction
      *
      * @return void
      */
@@ -170,10 +170,10 @@ class ChristmasTree
     /**
      * Place some torches on the Christmas tree
      *
-     * @param  int  $x
-     * @param  int  $y
-     * @param  int  $z
-     * @param  \pocketmine\world\BlockTransaction  $transaction
+     * @param int $x
+     * @param int $y
+     * @param int $z
+     * @param BlockTransaction $transaction
      *
      * @return void
      */
@@ -198,13 +198,13 @@ class ChristmasTree
     /**
      * Place a square
      *
-     * @param  int  $x
-     * @param  int  $y
-     * @param  int  $z
-     * @param  int  $length
-     * @param  int  $width
-     * @param  \pocketmine\block\Block  $block
-     * @param  \pocketmine\world\BlockTransaction  $transaction
+     * @param int $x
+     * @param int $y
+     * @param int $z
+     * @param int $length
+     * @param int $width
+     * @param Block $block
+     * @param BlockTransaction $transaction
      *
      * @return void
      */
@@ -232,10 +232,10 @@ class ChristmasTree
     /**
      * Get the highest tree block y coordinate at an x/z position
      *
-     * @param  int  $x
-     * @param  int  $z
-     * @param  int  $maxY
-     * @param  \pocketmine\world\BlockTransaction  $transaction
+     * @param int $x
+     * @param int $z
+     * @param int $maxY
+     * @param BlockTransaction $transaction
      *
      * @return int|null
      */

@@ -1,7 +1,8 @@
 <?php
 
 /**
- * FancyGenerators | plugin main class
+ * FancyGenerators | plugin main class, register generators provided by
+ * the plugin
  */
 
 namespace surva\fancygenerators;
@@ -17,7 +18,7 @@ use surva\fancygenerators\generator\winterwonder\WinterWonder;
 class FancyGenerators extends PluginBase
 {
     /**
-     * @var \surva\fancygenerators\FancyGenerators|null plugin main class instance
+     * @var FancyGenerators|null plugin main class instance
      */
     private static ?FancyGenerators $instance = null;
 
@@ -29,7 +30,9 @@ class FancyGenerators extends PluginBase
     }
 
     /**
-     * Register all custom generators of this plugin
+     * Register all generators provided by this plugin
+     *
+     * @return void
      */
     private function registerGenerators(): void
     {
@@ -40,7 +43,7 @@ class FancyGenerators extends PluginBase
     }
 
     /**
-     * @return \surva\fancygenerators\FancyGenerators
+     * @return FancyGenerators
      */
     public static function getInstance(): FancyGenerators
     {

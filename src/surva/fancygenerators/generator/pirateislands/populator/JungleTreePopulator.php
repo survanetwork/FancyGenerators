@@ -46,7 +46,7 @@ class JungleTreePopulator implements Populator
     /**
      * Get the y + 1 coordinate of the highest block at a specific position
      *
-     * @param  \pocketmine\world\ChunkManager  $world
+     * @param  ChunkManager  $world
      * @param  int  $x
      * @param  int  $z
      *
